@@ -42,7 +42,7 @@ Return a string that declares the winner of the round ('You lose, Rock beats Sci
 
 */
 
-let playerSelection = 'sCISSORS';
+let playerSelection = 'rock';
 
 let computerSelection = getComputerChoice();
 
@@ -78,4 +78,53 @@ function playRound(playerSelection, computerSelection) {
     
 }
 
-console.log(playRound(playerSelection, computerSelection));
+
+
+
+/*
+
+Write a new function called game()
+use the previous function inside to play a 5 round game that keeps score and reports a winner or loser at the end
+need to call playRound function 5 times in a row
+use a for loop to call the function 5 times.
+use console.log to display the results of each round and the winner at the end
+use prompt() to get input from the user
+
+*/
+
+function game() {
+    let result;
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+    playerSelection = prompt('Rock, paper, or scissors?');
+    computerSelection = getComputerChoice();
+    result = playRound(playerSelection, computerSelection);
+    
+    switch(result) {
+        case 'Draw! Both players tie!': playerScore = playerScore + 0;
+        break;
+
+        case 'You win! Rock beats scissors!': playerScore++;
+        break;
+
+        case 'You win! Paper beats rock!': playerScore++;
+        break;
+
+        case 'You win! Scissors beats paper!': playerScore++;
+        break;
+
+        default: computerScore++;
+    }
+
+    console.log(`${result} Player Score: ${playerScore} - Computer Score ${computerScore}`);
+}
+    if (playerScore > computerScore) {
+        console.log(`Player wins! ${playerScore} - ${computerScore}`);
+    } else if (playerScore < computerScore) {
+        console.log(`Computer wins! ${playerScore} - ${computerScore}`);
+    } else {
+        console.log(`Tie! Nobody won! ${playerScore} - ${computerScore}`);
+    };
+}
