@@ -18,18 +18,64 @@ function getComputerChoice() {
     let compChoice = Math.floor(Math.random() * 100) + 1;
     
     if (compChoice <= 33) {
-        compChoice = 'Rock';
+        compChoice = 'rock';
     } else if (compChoice <= 66) {
-        compChoice = 'Paper';
+        compChoice = 'paper';
     } else {
-        compChoice = 'Scissors';
+        compChoice = 'scissors';
     };
 
     return compChoice;
 };
 
-console.log(getComputerChoice());
 
 
 
+/*
+Write a function that plays a single round of Rock, Paper, Scissors.
+Function takes two parameters: playerSelection and computerSelection.
+Hard code the playerSelection, computerSelection will just be invoked from getComputerChoice
+Player selection should be case insensitve, so should use .toLowerCase() when examining playerSelection
+When comparing the two choices, should use the logical operater && to examine and determine the outcome.
+Use an if statement as well to return the statement of who one the round.
+Return a string that declares the winner of the round ('You lose, Rock beats Scissors');
 
+*/
+
+let playerSelection = 'sCISSORS';
+
+let computerSelection = getComputerChoice();
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    let outcome;
+
+    if (playerSelection === 'rock' && computerSelection === 'rock') {
+        outcome = 'Draw! Both players tie!';
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        outcome = 'You win! Rock beats scissors!';
+    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+        outcome = 'You lose! Rock loses to paper!';
+    };
+
+    if (playerSelection === 'paper' && computerSelection === 'paper') {
+        outcome = 'Draw! Both players tie!';
+    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        outcome = 'You win! Paper beats rock!';
+    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+        outcome = 'You lose! Paper loses to scissors!';
+    };
+
+    if (playerSelection === 'scissors' && computerSelection === 'scissors') {
+        outcome = 'Draw! Both players tie!';
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        outcome = 'You win! Scissors beats paper!';
+    } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+        outcome = 'You lose! Scissors loses to rock!';
+    };
+
+    return outcome;
+    
+}
+
+console.log(playRound(playerSelection, computerSelection));
